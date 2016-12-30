@@ -79,7 +79,6 @@ c:\users\bekky\documents\visual studio 2015\Projects\GigHub\GigHub\bin\Microsoft
 c:\users\bekky\documents\visual studio 2015\Projects\GigHub\GigHub\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\bekky\documents\visual studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.dll
 c:\users\bekky\documents\visual studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.pdb
-C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.csprojResolveAssemblyReference.cache
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.Migrations.InitialModel.resources
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.csproj.GenerateResource.Cache
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.Migrations.CreateGigTable.resources
@@ -96,3 +95,4 @@ C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\bin\System.Ne
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\bin\System.Web.Http.xml
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\bin\System.Web.Http.WebHost.xml
 C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.Migrations.AddFollowing.resources
+C:\Users\bekky\Documents\Visual Studio 2015\Projects\GigHub\GigHub\obj\Debug\GigHub.csprojResolveAssemblyReference.cache
