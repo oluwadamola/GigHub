@@ -19,53 +19,57 @@
             <div class="details">
                 <span class="artist">
                     @gig.Artist.Name
+                    @if(gig.IsCanceled){
+
+                        <span class="label label-warning">Canceled</span>
+                    }
                     @if (Model.ShowActions)
                     {
                         <button class="btn btn-link btn-sm js-toggle-follow " data-user-id="@gig.ArtistId">Follow</button>
                     }
-                    
+
                 </span>
                 <span class="genre">
                     @gig.Genre.GenreName
                 </span>
                 @if (Model.ShowActions)
                 {
-                    <button  class="btn btn-default btn-sm pull-right js-toggle-attendance" data-gig-id="@gig.GigId" >Going?</button>
-                }         
+                    <button class="btn btn-default btn-sm pull-right js-toggle-attendance" data-gig-id="@gig.GigId">Going?</button>
+                }
             </div>
         </li>
     }
-</ul>   
+</ul>
 
 @section scripts{
     <script>
-         $(document).ready(function(){
+        $(document).ready(function () {
             $(".js-toggle-attendance").
-            click(function(e){                
-            var button = $(e.target );
-                $.post("/api/attendances", { gigId : button.attr("data-gig-id")})
-                    .done(function() {
+            click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+                    .done(function () {
                         button
                              .removeClass("btn-default")
                             .addClass("btn-info")
                             .text("Going");
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("Something went wrong!");
                     });
             });
 
-             $(".js-toggle-follow")
-                 .click(function (e) {
-                     var button = $(e.target);
-                     $.post("/api/followings", { followeeId : button.attr("data-user-id") }) 
-                         .done(function() {
-                             button.text("Following");
-                         })
-                         .fail(function() {
-                             alert("Something failed!");
-                         });
-                 });
-         });
+            $(".js-toggle-follow")
+                .click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button.text("Following");
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        });
+                });
+        });
     </script>
 }
