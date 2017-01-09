@@ -1,10 +1,24 @@
-﻿@model GigHub.ViewModels.GigsViewModel
+﻿@using System.Web.Mvc.Html
+@model GigHub.ViewModels.GigsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 <h1>@Model.Heading</h1>
 
-<ul class="gigs voffset4">
+@using (Html.BeginForm("Search", "Gigs"))
+{
+    <div class="form-group">
+        <div class="input-group" id="searchGigs">
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder=" search by Artist,Genre or Location..."})
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search">         
+                </i>
+            </span>
+        </div>
+    </div>
+}
+
+<ul id="gigs" class="gigs voffset4">
     @foreach (var gig in Model.UpcommingGigs)
     {
         <li>
@@ -18,23 +32,27 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
-                    @if(gig.IsCanceled){
+                    <a href="@Url.Action("Details", "Gigs" , new {id = gig.GigId})">
+                        @gig.Artist.Name
+                    </a>
+                    @if (gig.IsCanceled)
+                    {
 
                         <span class="label label-warning">Canceled</span>
                     }
-                    @if (Model.ShowActions)
-                    {
-                        <button class="btn btn-link btn-sm js-toggle-follow " data-user-id="@gig.ArtistId">Follow</button>
-                    }
+@*                    @if (Model.ShowActions)*@
+@*                    {*@
+@*                        <button class="btn btn-link btn-sm js-toggle-follow " data-user-id="@gig.ArtistId">Follow</button>*@
+@*                    }*@
 
                 </span>
                 <span class="genre">
                     @gig.Genre.GenreName
                 </span>
-                @if (Model.ShowActions)
+                @if (Model.ShowActions && !gig.IsCanceled)
                 {
-                    <button class="btn btn-default btn-sm pull-right js-toggle-attendance" data-gig-id="@gig.GigId">Going?</button>
+                    <button class=" pull-left btn @(Model.Attendances.Contains(gig.GigId)? "btn-Info" : "btn-default")
+                             btn-sm pull-right js-toggle-attendance" data-gig-id="@gig.GigId" >Going?</button>
                 }
             </div>
         </li>
@@ -44,32 +62,21 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $(".js-toggle-attendance").
-            click(function (e) {
-                var button = $(e.target);
-                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-                    .done(function () {
-                        button
-                             .removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-                    })
-                    .fail(function () {
-                        alert("Something went wrong!");
-                    });
-            });
 
-            $(".js-toggle-follow")
-                .click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                        .done(function () {
-                            button.text("Following");
-                        })
-                        .fail(function () {
-                            alert("Something failed!");
-                        });
-                });
+            gigController.init("#gigs");
+
+//                $(".js-toggle-follow")
+//                    .click(function(e) {
+//                        var button = $(e.target);
+//                        $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+//                            .done(function() {
+//                                button.text("Following");
+//                            })
+//                            .fail(function() {
+//                                alert("Something failed!");
+//                            });
+//                    });
+
         });
     </script>
 }

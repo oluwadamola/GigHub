@@ -32,7 +32,18 @@ span.field-validation-error {
 .voffset3{ margin-top: 20px;}
 .voffset4{ margin-top: 40px;}
 .voffset5{ margin-top: 80px;}
+
+
 /*Boostrap overrides*/
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+.popover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 
 .navbar-inverse {
     background-color: #fa5c5b;
@@ -41,17 +52,28 @@ span.field-validation-error {
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 } 
+
 .navbar-inverse .navbar-brand {
     color: #fff;
+}
+.navbar-inverse .notifications { 
+    position: relative;
+}
+.navbar-inverse .notifications .badge {
+    position: absolute;
+    top: 8px;
+    right:-1px;
+    background: #a80a0a;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     color: #ffffff;
     background-color: rgba(205, 40, 39, 0.55);
 }
 .dropdown-menu {
-    box-shadow: none;
     -webkit-box-shadow: none;
+    box-shadow: none;
 }
+
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
     border-top-color: #fff;
     border-bottom-color: #fff;
@@ -80,6 +102,10 @@ h6,
   font-weight: 500;
   line-height: 1.1;
 }
+a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: none;
+}
 .form-group {
     margin-bottom: 20px;
 }
@@ -91,9 +117,10 @@ h6,
 }
 .form-control:focus {
     border-color: #2196F3;
-    box-shadow: none;
     -webkit-box-shadow: none;
+    box-shadow: none;
 }
+
 .btn {
 /*    font-size: 17px;*/
 /*    padding: 7px 20px;*/
@@ -140,7 +167,9 @@ h6,
 
 }
 .gigs > li .details .genre {
-    font-size: 15px;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
 }
 .gigs > li .actions {
     font-size: 15px;
@@ -149,3 +178,24 @@ h6,
 .gigs > li:hover .actions {
     display: block;
 } 
+
+.popover-notifications .popover-content {
+    padding: 0;
+}
+.popover-notifications ul.notifications {
+    list-style: none;
+    padding-left: 0;
+}
+.popover-notifications ul.notifications > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px; 
+}
+.popover-notifications ul.notifications > li:last-child {
+    border-bottom: none;
+}
+.popover-notifications ul.notifications .highlight {
+    font-weight: bold;
+}
+#searchGigs{
+    width: 300px;
+}
